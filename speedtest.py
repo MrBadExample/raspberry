@@ -1,4 +1,3 @@
-import os
 import re
 import subprocess
 from csv import writer
@@ -44,14 +43,14 @@ def append_values_to_influxdb():
         }
     ]
 
-    client = InfluxDBClient(config.influxdb_ip,
-                            config.influxdb_port,
-                            config.influxdb_name,
-                            config.influxdb_password,
-                            config.influxdb_name)
+    client = InfluxDBClient(config.ip,
+                            config.port,
+                            config.user,
+                            config.password,
+                            config.speed_test_database)
 
     client.write_points(speed_data)
 
 
 append_values_to_influxdb()
-append_values_in_csv('speed_test_data.csv')
+
